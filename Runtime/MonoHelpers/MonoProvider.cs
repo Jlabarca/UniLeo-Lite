@@ -8,7 +8,7 @@ namespace Voody.UniLeo.Lite
     {
         [SerializeField] protected T value;
 
-        public abstract void Setup(int entity, T value);
+        protected abstract void Setup(int entity, EcsWorld world);
 
         void IConvertToEntity.Convert(int entity, EcsWorld world)
         {
@@ -17,7 +17,7 @@ namespace Voody.UniLeo.Lite
             {
                 pool.Del(entity);
             }
-            Setup(entity, value);
+            Setup(entity, world);
             pool.Add(entity) = value;
         }
     }
